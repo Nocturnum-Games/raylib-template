@@ -9,6 +9,7 @@ import "core:os/os2"
 import "core:log"
 import "../game"
 
+_ :: mem
 _ :: os
 _ :: os2
 _ :: dynlib
@@ -17,7 +18,7 @@ _ :: game
 ENABLE_TRACKING_ALLOCATOR :: #config(ENABLE_TRACKING_ALLOCATOR, false)
 ENABLE_PROFILER           :: #config(ENABLE_PROFILER, false)
 ENABLE_HOT_RELOAD         :: #config(ENABLE_HOT_RELOAD, false)
-STANDALONE                :: #config(STANDALONE, false)
+STANDALONE                :: #config(STANDALONE, true)
 
 main :: proc() {
     args := os.args

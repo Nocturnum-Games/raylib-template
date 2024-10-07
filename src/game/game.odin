@@ -8,7 +8,7 @@ _ :: rl
 ENABLE_TRACKING_ALLOCATOR :: #config(ENABLE_TRACKING_ALLOCATOR, false)
 ENABLE_PROFILER           :: #config(ENABLE_PROFILER, false)
 ENABLE_HOT_RELOAD         :: #config(ENABLE_HOT_RELOAD, false)
-STANDALONE                :: #config(STANDALONE, false)
+STANDALONE                :: #config(STANDALONE, true)
 
 PIXEL_WINDOW_HEIGHT :: 180
 
@@ -68,7 +68,7 @@ draw :: proc() {
     rl.EndMode2D()
 
     rl.BeginMode2D(ui_camera())
-    
+
     rl.EndMode2D()
 
     rl.EndDrawing()
