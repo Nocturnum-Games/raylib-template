@@ -25,7 +25,12 @@ main :: proc() {
     root := filepath.dir(args[0], context.temp_allocator)
     os.set_current_directory(root)
 
-    logh, logh_err := os.open("log.txt", (os.O_CREATE | os.O_TRUNC | os.O_RDWR), 0)
+    mode: int = 0
+    when ODIN_OS == .Linux || ODIN_OS == .Darwin {
+        mode = os.S_IRUSR | os.S_IWUSR | os.S_IRGRP | os.S_IROTH
+    }
+
+    logh, logh_err := os.open("log.txt", (os.O_CREATE | os.O_TRUNC | os.O_RDWR), mode)
     defer os.close(logh)
     
     if logh_err == os.ERROR_NONE {
@@ -123,7 +128,6 @@ main :: proc() {
         }
         free_all(context.temp_allocator)
     }
-
 
     when ENABLE_HOT_RELOAD {
         game_api.shutdown()
