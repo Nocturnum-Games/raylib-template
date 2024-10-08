@@ -2,7 +2,9 @@ package game
 
 import rl "vendor:raylib"
 import "core:math/linalg"
-
+import "core:os"
+import "core:fmt"
+import "core:path/filepath"
 _ :: rl
 
 ENABLE_TRACKING_ALLOCATOR :: #config(ENABLE_TRACKING_ALLOCATOR, false)
@@ -84,7 +86,7 @@ game_update :: proc() -> bool {
 @(export)
 game_init_window :: proc() {
     rl.SetConfigFlags({.WINDOW_RESIZABLE, .VSYNC_HINT})
-    rl.InitWindow(1280, 720, "Odin + Raylib + Hot Reload template!")
+    rl.InitWindow(1280, 720, fmt.ctprintf(filepath.base(os.args[0])))
     rl.SetWindowPosition(200, 200)
     rl.SetTargetFPS(500)
 }
